@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">照明系统</string>
+    <string name="control_name">监控</string>
+    <string name="location_name">位置</string>
+    <string name="timetable_name">时间表</string>
+    <string name="scene_name">监控</string>
+    <string name="info_name">统计</string>
+    <string name="action_settings">Settings</string>
+    <drawable name="bkcolor">#e65371ba</drawable>
+    <string name="pull_to_refresh">下拉可以刷新</string>
+    <string name="release_to_refresh">松开可以刷新</string>
+    <string name="lastUpdateTime">最近更新：%s</string>
+    <string name="load_full">已加载全部</string>
+    <string name="no_data">暂无数据</string>
+    <string name="more">加载中</string>
+    <string name="account">账户</string>
+    <string name="help">帮助</string>
+    <string name="about">关于</string>
+    <string name="floorset">区域设置</string>
+    <string name="exit">退出</string>
+    <string name="cancel">取消</string>
+    <string name="lampid">灯控器ID：</string>
+    <string name="floor">添加楼层</string>
+    <string name="scanbarcode">扫描条形码</string>
+    <string name="handinput">手工输入</string>
+    <string name="ok">确定</string>
+    <string name="newdevice">新增设备</string>
+    <string name="title">信息同步中...</string>
+    <string name="back">返回</string>
+    <string name="image">图片</string>
+    <string name="scan_text">请扫描产品序列号条形码</string>
+    <string name="flooricon">房间图标</string>
+    <string name="floorname">楼层名称</string>
+    <string name="floorselect">楼层选择</string>
+</resources>

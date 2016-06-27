@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <color name="cell_ordinary_h">#e52897d3</color>
+    <color name="cell_ordinary_m">#b215adff</color>
+    <color name="cell_ordinary_l">#7f15adff</color>
+    <color name="cell_special_h">#e5e05c1b</color>
+    <color name="cell_special_m">#b2ff5c0b</color>
+    <color name="cell_special_l">#7fff5c0b</color>
+    <color name="cell_ordinary_h_nigth">#e5000000</color>
+    <color name="cell_ordinary_m_night">#b2000000</color>
+    <color name="cell_ordinary_l_night">#7f000000</color>
+    <color name="cell_special_h_night">#e5d46630</color>
+    <color name="cell_special_m_night">#b2d46630</color>
+    <color name="cell_special_l_night">#7fd46630</color>
+    <color name="floralwhite">#FFFAF0</color>
+    <color name="gray">#D9D9D9</color>
+    <!-- 暗灰色 -->
+    <color name="dimgrey">#696969</color>
+    <color name="black">#ff000000</color>
+    <color name="grey">#808080</color>
+    <color name="white">#ffffffff</color>
+    <color name="main_bg">#fff0f0f0</color>
+    <color name="lightgrey">#ff888888</color>
+    <color name="blue1">#ff61a8de</color>
+
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_image_border">#ffffffff</color>
+    <color name="result_points">#c000ff00</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="lucensy">#00000001</color>
+    <color name="translucency">#e0000000</color>
+
+    <color name="gap_line">#e2e2e2</color>
+    <color name="item_bg">#e5e5e5</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_half">#23000000</color>
+</resources>

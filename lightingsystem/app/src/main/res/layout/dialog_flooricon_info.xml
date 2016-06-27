@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_flooricon_changebirth"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ly_flooricon_changebirth_child"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_selector"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/btn_flooricon_cancel"
+                android:layout_width="77dp"
+                android:layout_height="33dp"
+                android:layout_alignParentRight="false"
+                android:text="取消"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_alignParentLeft="true" />
+
+
+            <TextView
+                android:id="@+id/btn_flooricon_ok"
+                android:layout_width="77dip"
+                android:layout_height="33dip"
+                android:layout_toLeftOf="@+id/btn_floorselect_cancel"
+                android:text="确认"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <com.zklink.lightingsystem.timetable.views.WheelView
+                android:id="@+id/wv_flooricon"
+                android:layout_width="0dip"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="15dp"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

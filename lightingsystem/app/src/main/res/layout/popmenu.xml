@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_view_cont"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingRight="8dp"
+    android:paddingTop="4dp" >
+
+    <LinearLayout
+        android:id="@+id/popup_view"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popmenu_bg"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="16dp" >
+
+        <TextView
+            android:id="@+id/tv_set"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_pop_item"
+            android:clickable="true"
+            android:drawablePadding="3dp"
+            android:gravity="center_vertical"
+            android:padding="7dp"
+            android:text="@string/floorset"
+            android:textColor="@color/popup_menu_text"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_exit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_pop_item"
+            android:clickable="true"
+            android:drawablePadding="3dp"
+            android:gravity="center_vertical"
+            android:padding="7dp"
+            android:text="@string/newdevice"
+            android:textColor="@color/popup_menu_text"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</LinearLayout>

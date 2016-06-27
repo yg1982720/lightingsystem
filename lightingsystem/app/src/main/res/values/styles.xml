@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="ShareDialog" parent="@android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="header">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/mmtitle_bg</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">42.0dip</item>
+    </style>
+
+    <style name="text_title">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">#ff404040</item>
+        <item name="android:shadowDx">1.2</item>
+        <item name="android:shadowDy">1.2</item>
+        <item name="android:shadowRadius">1.0</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">18.0dip</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="mystyle" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/slide_in_from_bottom</item>
+        <item name="@android:windowExitAnimation">@anim/slide_out_to_bottom</item>
+    </style>
+</resources>

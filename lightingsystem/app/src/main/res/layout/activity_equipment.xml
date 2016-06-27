@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 通用宫格视图 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bkcolor"
+    android:orientation="vertical">
+
+    <include layout="@layout/head"/>
+    <include layout="@layout/activity_info"/>
+</LinearLayout>
