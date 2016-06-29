@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.zklink.lightingsystem.R;
 import com.zklink.lightingsystem.db.DBManager;
 import com.zklink.lightingsystem.db.GroupInfo;
+import com.zklink.lightingsystem.db.LampInfo;
 import com.zklink.lightingsystem.location.model.DargChildInfo;
 import com.zklink.lightingsystem.location.model.DragIconInfo;
 
@@ -34,31 +35,41 @@ public class ControllistViewFragment extends Fragment{
     private List<Bean> mDatas;
     private MyAdapter adapter;
     private DBManager dbManager;
+    private int group=0;
+    //public Context context = this.getActivity().getApplicationContext();
+    public static ControllistViewFragment newInstance(int index) {
+        ControllistViewFragment f = new ControllistViewFragment();
+        // Supply index input as an argument.
+        Bundle args = new Bundle();
+        args.putInt("index", index);
+        f.setArguments(args);
+        return f;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         View view = inflater.inflate(R.layout.activity_control_listviewfragment, container, false);
+        dbManager = new DBManager(this.getActivity().getApplicationContext());
         Bundle bundle = getArguments();
+        int i=0;
+
         if(bundle!=null)
         {
-            ArrayList<GroupInfo> infoList = new ArrayList<GroupInfo>();
-            bundle.getString("group_id");
+            i=bundle.getInt("index");
+
             if(dbManager!=null) {
-                infoList = dbManager.searchAllGroupData();
-                for (GroupInfo info : infoList) {
-                    //iconInfoList.add(new DragIconInfo(info.group_id, info.group_name, imageId[info.group_iconid], DragIconInfo.CATEGORY_ONLY, new ArrayList<DargChildInfo>()));
-                }
+                initDatas(i);
+                group=i;
+                mListView=(ListView) view.findViewById(R.id.id_listview);
+                mListView.setOnItemClickListener(new Click()) ;
+
+                mListView.setAdapter(adapter);
             }
         }
 
-        initDatas();
 
-        mListView=(ListView) view.findViewById(R.id.id_listview);
-        mListView.setOnItemClickListener(new Click()) ;
-
-        mListView.setAdapter(adapter);
 
         return view;
 
@@ -81,23 +92,13 @@ public class ControllistViewFragment extends Fragment{
 
     }
 
-    private void initDatas(){
+    private void initDatas(int group){
         mDatas = new ArrayList<Bean>();
-        Bean lamp1 = new Bean("灯具1","组号1",R.drawable.floor,R.drawable.activebtn);
-        mDatas.add(lamp1);
-        Bean lamp2 = new Bean("灯具2","组号2",R.drawable.floor,R.drawable.activebtn);
-        mDatas.add(lamp2);
-        Bean lamp3 = new Bean("灯具3","组号3",R.drawable.floor,R.drawable.activebtn);
-        mDatas.add(lamp3);
-        Bean lamp4 = new Bean("灯具4","组号4",R.drawable.floor,R.drawable.activebtn);
-        mDatas.add(lamp4);
-        Bean lamp5 = new Bean("灯具5","组号5",R.drawable.floor,R.drawable.activebtn);
-        mDatas.add(lamp5);
-        Bean lamp6 = new Bean("灯具6","组号6",R.drawable.floor,R.drawable.activebtn);
-        mDatas.add(lamp6);
-        Bean lamp7 = new Bean("灯具7","组号7",R.drawable.floor,R.drawable.activebtn);
-        mDatas.add(lamp7);
-
+        ArrayList<LampInfo> infoList = new ArrayList<LampInfo>();
+        infoList = dbManager.searchLampData(group);
+        for (LampInfo info : infoList) {
+            mDatas.add(new Bean("ID："+info.lamp_id,info.lamp_name,R.drawable.lampon,R.drawable.activebtn));
+        }
         adapter = new MyAdapter(getActivity(), mDatas);
     }
 
@@ -106,7 +107,7 @@ public class ControllistViewFragment extends Fragment{
         private LayoutInflater mInflater;
         private List<Bean> mDatas;
         private ImageView switchimage;
-        private boolean[] switchcontrol_flag = { false, false, false, false, false, false, false };
+        private boolean[] switchcontrol_flag=new boolean[400];
 
         public MyAdapter(Context context, List<Bean> datas) {
             mInflater = LayoutInflater.from(context);
@@ -149,13 +150,27 @@ public class ControllistViewFragment extends Fragment{
             holder.miaoshu.setText(bean.getJieShao());
             holder.image.setBackgroundResource(bean.getPicture1());
             holder.lampbtn.setBackgroundResource(bean.getPicture2());
+            for(int num = 0; num< 400; num++)
+            {
+                switchcontrol_flag[num] = false;
+            }
             holder.lampbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     if (switchcontrol_flag[position]) {
                         switchcontrol_flag[position] = false;
-                        Bean lamp1 = new Bean("灯具1", "组号1", R.drawable.floor,R.drawable.activebtn);
-
+                        ArrayList<LampInfo> infoList = new ArrayList<LampInfo>();
+                        infoList = dbManager.searchLampData(group);
+                        int i=0;
+                        String Lamp_id[]=new String[infoList.size()];
+                        String Lamp_name[]=new String[infoList.size()];
+                        for (LampInfo info : infoList) {
+                            Lamp_id[i]= info.lamp_id;
+                            Lamp_name[i]=info.lamp_name;
+                            i++;
+                        }
+                        Bean lamp1 = new Bean("ID："+Lamp_id[position],Lamp_name[position],R.drawable.lampon,R.drawable.activebtn);
                         SetData(position, lamp1);
 
                         //adapter = new MyAdapter(ControllistViewFragment.this, mDatas);
@@ -163,7 +178,17 @@ public class ControllistViewFragment extends Fragment{
 
                     } else {
                         switchcontrol_flag[position] = true;
-                        Bean lamp1 = new Bean("灯具1","组号1",R.drawable.floor,R.drawable.hoverbtn);
+                        ArrayList<LampInfo> infoList = new ArrayList<LampInfo>();
+                        infoList = dbManager.searchLampData(group);
+                        int i=0;
+                        String Lamp_id[]=new String[infoList.size()];
+                        String Lamp_name[]=new String[infoList.size()];
+                        for (LampInfo info : infoList) {
+                            Lamp_id[i]= info.lamp_id;
+                            Lamp_name[i]=info.lamp_name;
+                            i++;
+                        }
+                        Bean lamp1 = new Bean("ID："+Lamp_id[position],Lamp_name[position],R.drawable.lampon,R.drawable.hoverbtn);
                         SetData(position, lamp1);
                         //adapter = new MyAdapter(getActivity(), mDatas);
                         //notifyDataSetChanged();
@@ -182,12 +207,12 @@ public class ControllistViewFragment extends Fragment{
 
         public void AddData(Bean s){
             mDatas.add(s);
-            adapter.notifyDataSetChanged();;
+            adapter.notifyDataSetChanged();
         }
 
         public void SetData(final int position,Bean s){
             mDatas.set(position, s);
-            adapter.notifyDataSetChanged();;
+            adapter.notifyDataSetChanged();
         }
     }
 }

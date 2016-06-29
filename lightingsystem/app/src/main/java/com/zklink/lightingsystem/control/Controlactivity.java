@@ -33,6 +33,8 @@ public class Controlactivity extends FragmentActivity {
     HorizontalListView hListView;
     HorizontalListViewAdapter hListViewAdapter;
     private DBManager dbManager;
+    int mCurCheckPosition = 0;
+    int mShownCheckPosition = -1;
     int[] imageId = new int[] { R.drawable.floor1, R.drawable.floor2,R.drawable.floor3 };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,22 +50,12 @@ public class Controlactivity extends FragmentActivity {
             ft.add(R.id.lampListView, new ControllistViewFragment());
             ft.commit();
         }
-        //ControlImageViewFragment ifragment =(ControlImageViewFragment) fm.findFragmentById(R.id.floorView);
 
         initUI();
-        //if(ifragment == null)
-        //{
-        //    FragmentTransaction ft = fm.beginTransaction();
-        //    ft.add(R.id.floorView, new ControlImageViewFragment());
-        //    ft.commit();
-        //}
     }
 
     public void initUI(){
         hListView = (HorizontalListView)findViewById(R.id.floorView);
-       // previewImg = (ImageView)findViewById(R.id.floor);
-       // String titles[]=new String[18];
-        //int ids[] =new int[18];
         Integer i=0;
         ArrayList<GroupInfo> infoList = new ArrayList<GroupInfo>();
         if(dbManager!=null) {
@@ -89,15 +81,29 @@ public class Controlactivity extends FragmentActivity {
                 hListViewAdapter.setSelectIndex(position);
                 hListViewAdapter.notifyDataSetChanged();
 
-                manager = getSupportFragmentManager();
-                transaction = manager.beginTransaction();
+                //int groupid=0;
+                Integer i=0;
+                ArrayList<GroupInfo> infoList = new ArrayList<GroupInfo>();
+                if(dbManager!=null) {
+                    infoList = dbManager.searchAllGroupData();
+                    Integer groupid[]=new Integer[infoList.size()];
+                    for (GroupInfo info : infoList) {
+                        groupid[i]=info.group_id;
+                        i++;
+                    }
 
-                ControllistViewFragment fragment1 = new ControllistViewFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("group_id", "1");
-                fragment1.setArguments(bundle);
+                    mCurCheckPosition = position;
+                    if (mShownCheckPosition != mCurCheckPosition) {
 
-                transaction.commit();
+                        ControllistViewFragment df = ControllistViewFragment.newInstance(groupid[position]);
+                        FragmentTransaction ft = getSupportFragmentManager()
+                                .beginTransaction();
+                        ft.replace(R.id.lampListView, df);
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        ft.commit();
+                        mShownCheckPosition = position;
+                    }
+                }
             }
         });
 
