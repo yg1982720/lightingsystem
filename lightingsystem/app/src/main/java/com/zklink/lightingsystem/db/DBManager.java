@@ -26,6 +26,26 @@ public class DBManager {
         db = helper.getWritableDatabase();
     }
 
+
+    /**
+     * 向表info中增加一个成员信息
+     *
+     * @param controllerinfo
+     */
+    public void addcontroller(List<ControllerInfo> controllerinfo) {
+        db.beginTransaction();// 开始事务
+        try {
+            for (ControllerInfo info : controllerinfo) {
+                // 向表info中插入数据
+                db.execSQL("INSERT INTO controllerinfo VALUES(null,?,?,?,?,?)", new Object[] { info.controller_id,info.controller_name,
+                        info.longitudeandlatitude,info.controller_ipandport,info.controller_domainname });
+            }
+            db.setTransactionSuccessful();// 事务成功
+        } finally {
+            db.endTransaction();// 结束事务
+        }
+    }
+
     /**
      * 向表info中增加一个成员信息
      *

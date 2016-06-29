@@ -26,7 +26,7 @@ public class ActMenu extends Activity{
 
             @Override
             public void run() {
-                Intent intent = new Intent(ActMenu.this, MainActivity.class);
+                Intent intent = new Intent(ActMenu.this, InstallActivity.class);
                 startActivity(intent);
                 finish();
             }

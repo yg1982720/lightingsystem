@@ -28,9 +28,16 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
             +"group_scene integer,"
             +"group_lampinstallnum integer,"
             +"group_iconid integer)";
+    public static  final String CREATE_CONTROLLER="create table if not exists controllerinfo("
+            +"_id integer primary key autoincrement,"
+            +"controller_id integer,"
+            +"controller_name varchar,"
+            +"longitudeandlatitude varchar,"
+            +"controller_ipandport varchar,"
+            +"controller_domainname varchar)";
     public static final String DB_TABLE_NAME_LAMP = "lampinfo";
     public static final String DB_TABLE_NAME_GROUP = "groupinfo";
-
+    public static final String DB_TABLE_NAME_CONTROLLER = "controllerinfo";
     private static final int DB_VERSION=1;
     public DatabaseHelper(Context context) {
         //Context context, String name, CursorFactory factory, int version
@@ -43,6 +50,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
         //创建表
         db.execSQL(CREATE_LAMP);
         db.execSQL(CREATE_GROUP);
+        db.execSQL(CREATE_CONTROLLER);
         //db.execSQL("CREATE TABLE IF NOT EXISTS tb_lampinfo" +
         //        "(_id INTEGER PRIMARY KEY AUTOINCREMENT, lamp_name VARCHAR, devicenum INTEGER, scalepoint INTEGER, group INTEGER,workmode INTEGER,usestatus INTEGER)");
         //db.execSQL("CREATE GROUPTABLE IF NOT EXISTS info" +

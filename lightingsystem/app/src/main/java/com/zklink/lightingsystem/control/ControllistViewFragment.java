@@ -108,11 +108,16 @@ public class ControllistViewFragment extends Fragment{
         private List<Bean> mDatas;
         private ImageView switchimage;
         private boolean[] switchcontrol_flag=new boolean[400];
+        //for(int num = 0; num< 400; num++)
+        //{
+        //    switchcontrol_flag[num] = false;
+        //}
 
         public MyAdapter(Context context, List<Bean> datas) {
             mInflater = LayoutInflater.from(context);
             this.mDatas = datas;
         }
+
 
         @Override
         public int getCount() {
@@ -150,10 +155,7 @@ public class ControllistViewFragment extends Fragment{
             holder.miaoshu.setText(bean.getJieShao());
             holder.image.setBackgroundResource(bean.getPicture1());
             holder.lampbtn.setBackgroundResource(bean.getPicture2());
-            for(int num = 0; num< 400; num++)
-            {
-                switchcontrol_flag[num] = false;
-            }
+
             holder.lampbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

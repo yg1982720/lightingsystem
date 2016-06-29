@@ -39,6 +39,7 @@ import com.zklink.lightingsystem.gumei.ui.ListViewCompat.OnLoadListener;
 import com.zklink.lightingsystem.gumei.ui.ListViewCompat.OnRefreshListener;
 import com.zklink.lightingsystem.gumei.ui.SlideView;
 import com.zklink.lightingsystem.gumei.ui.SlideView.OnSlideListener;
+import com.zklink.lightingsystem.gumei.ui.MessageItem;
 import android.widget.AdapterView.OnItemClickListener;
 import android.view.View.OnClickListener;
 /**
@@ -55,7 +56,7 @@ public class EquipmentActivity extends Activity implements OnItemClickListener, 
     private final static int SCANNINCON_GREQUEST_CODE=3;//集中器
 
     private ListViewCompat mListView;
-    private List<MessageItem> mMessageItems = new ArrayList<EquipmentActivity.MessageItem>();
+    private List<MessageItem> mMessageItems = new ArrayList<MessageItem>();
     private SlideView mLastSlideViewWithStatusOn;
     private SlideAdapter adapter;
     private int allCount = 400;
@@ -307,14 +308,6 @@ public class EquipmentActivity extends Activity implements OnItemClickListener, 
             return slideView;
         }
 
-    }
-
-    public class MessageItem {
-        public int iconRes;
-        public String title;
-        public String msg;
-        public String time;
-        public SlideView slideView;
     }
 
     private static class ViewHolder {

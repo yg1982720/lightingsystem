@@ -34,7 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 
 import com.zklink.lightingsystem.R;
-import com.zklink.lightingsystem.info.Infoactivity.MessageItem;
+//import com.zklink.lightingsystem.info.Infoactivity.MessageItem;
 import com.zklink.lightingsystem.handmark.pulltorefresh.library.internal.EmptyViewMethodAccessor;
 import com.zklink.lightingsystem.handmark.pulltorefresh.library.internal.IndicatorLayout;
 

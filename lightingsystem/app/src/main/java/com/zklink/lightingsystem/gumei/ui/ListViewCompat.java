@@ -17,7 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.zklink.lightingsystem.R;
-import com.zklink.lightingsystem.equipment.EquipmentActivity.MessageItem;
+import com.zklink.lightingsystem.gumei.ui.MessageItem;
 public class ListViewCompat extends ListView  implements OnScrollListener{
 
     private static final String TAG = "ListViewCompat";
@@ -106,8 +106,11 @@ public class ListViewCompat extends ListView  implements OnScrollListener{
             Log.e(TAG, "postion=" + position);
             if (position != INVALID_POSITION) {
                 MessageItem data = (MessageItem) getItemAtPosition(position);
-                mFocusedItemView = data.slideView;
-                Log.e(TAG, "FocusedItemView=" + mFocusedItemView);
+				if(data!=null)
+                	mFocusedItemView = data.slideView;
+				else
+					mFocusedItemView=null;
+                //Log.e(TAG, "FocusedItemView=" + mFocusedItemView);
             }
             if (firstVisibleItem == 0) {
  				isRecorded = true;

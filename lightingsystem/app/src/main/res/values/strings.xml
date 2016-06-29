@@ -3,7 +3,7 @@
     <string name="control_name">监控</string>
     <string name="location_name">位置</string>
     <string name="timetable_name">时间表</string>
-    <string name="scene_name">监控</string>
+    <string name="scene_name">场景</string>
     <string name="info_name">统计</string>
     <string name="action_settings">Settings</string>
     <drawable name="bkcolor">#e65371ba</drawable>

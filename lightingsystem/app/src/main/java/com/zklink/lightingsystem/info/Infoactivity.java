@@ -20,26 +20,31 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zklink.lightingsystem.R;
+import com.zklink.lightingsystem.db.DBManager;
+import com.zklink.lightingsystem.db.LampInfo;
 import com.zklink.lightingsystem.gumei.ui.ListViewCompat;
 import com.zklink.lightingsystem.gumei.ui.ListViewCompat.OnLoadListener;
 import com.zklink.lightingsystem.gumei.ui.ListViewCompat.OnRefreshListener;
 import com.zklink.lightingsystem.gumei.ui.SlideView;
 import com.zklink.lightingsystem.gumei.ui.SlideView.OnSlideListener;
+import com.zklink.lightingsystem.gumei.ui.MessageItem;
 
 @SuppressWarnings("rawtypes")
 public class Infoactivity extends Activity implements OnItemClickListener, OnClickListener,
         OnSlideListener, OnRefreshListener,OnLoadListener {
 
     private ListViewCompat mListView;
-    private List<MessageItem> mMessageItems = new ArrayList<Infoactivity.MessageItem>();
+    private List<MessageItem> mMessageItems = new ArrayList<MessageItem>();
     private SlideView mLastSlideViewWithStatusOn;
     private SlideAdapter adapter;
     private int allCount = 400;
-
+    private DBManager dbManager;
+    private int lamp_num;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+        dbManager = new DBManager(this);
         setContentView(R.layout.activity_info);
         initView();
         loadData(ListViewCompat.REFRESH);
@@ -78,18 +83,33 @@ public class Infoactivity extends Activity implements OnItemClickListener, OnCli
     // 测试数据
     public List<MessageItem> getData() {
         List<MessageItem> result = new ArrayList<MessageItem>();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             MessageItem item = new MessageItem();
-            if (i % 2 == 0) {
+            if (i == 0)
+            {
+                ArrayList<LampInfo> infoList = new ArrayList<LampInfo>();
+                infoList = dbManager.searchAllLampData();
+                lamp_num=0;
+                for (LampInfo info : infoList)
+                {
+                    lamp_num++;
+                }
                 item.iconRes = R.drawable.lampon;
                 item.title = "灯控器";
                 item.msg = "控制灯具亮度";
-                item.time = "2/2 >";
-            } else {
+                item.time = lamp_num+"/"+lamp_num+" >";
+            } else if(i==1){
                 item.iconRes = R.drawable.line_switch;
                 item.title = "线路开关";
                 item.msg = "控制线路断合";
-                item.time = "1/1 >";
+                item.time = "0/0 >";
+            }
+            else
+            {
+                item.iconRes = R.drawable.control;
+                item.title = "总控器";
+                item.msg = "控制线路断合";
+                item.time = "0/0 >";
             }
             result.add(item);
         }
@@ -186,14 +206,6 @@ public class Infoactivity extends Activity implements OnItemClickListener, OnCli
             return slideView;
         }
 
-    }
-
-    public class MessageItem {
-        public int iconRes;
-        public String title;
-        public String msg;
-        public String time;
-        public SlideView slideView;
     }
 
     private static class ViewHolder {

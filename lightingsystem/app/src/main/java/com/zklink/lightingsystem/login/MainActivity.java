@@ -71,8 +71,8 @@ public class MainActivity extends Activity {
                         //finish();
                         break;
 
-                   case 3://进入设备安装设置界面
-                       startActivity(new Intent(MainActivity.this, EquipmentActivity.class));
+                   case 3://进入场景界面
+                       startActivity(new Intent(MainActivity.this, SceneActivity.class));
                        //finish();
                        break;
 
@@ -104,14 +104,14 @@ public class MainActivity extends Activity {
 
     private List<Bitmap> getEditingBitmaps() {
         List<Bitmap> images = new ArrayList<Bitmap>();
-        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m1));
-        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m2));
-        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m3));
-        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m4));
-        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m5));
-        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m6));
-        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m7));
-        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m8));
+        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m1));//监控
+        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m2));//区域
+        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m3));//时间
+        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m4));//场景
+        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m5));//设备统计
+        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m6));//总控器设置
+        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m7));//产品介绍
+        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.m8));//帮助
         return images;
     }
 
